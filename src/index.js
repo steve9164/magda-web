@@ -7,8 +7,9 @@ import { Router, Route, browserHistory } from 'react-router'
 
 ReactDOM.render(
   <Router history={browserHistory}>
-      <Route path="/" component={Search}>
-        <Route path="/keyword/:keyword" component={SearchBody}/>
+      <Route path="/" component={Search}/>
+      <Route path="/search" component={Search}>
+        <Route path="/search/:keyword" component={SearchBody}/>
       </Route>
     </Router>,
   document.getElementById('root')

@@ -1,7 +1,9 @@
 import SearchResults from './SearchResults/SearchResults';
 import SearchFilters from './SearchFilters/SearchFilters';
-import SearchBox from './SearchBox';
+
 import React, { Component } from 'react';
+
+
 let getJSON = function(url) {
   return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();
@@ -26,37 +28,27 @@ class SearchBody extends Component {
     this.state = {
       searchResults: []
     };
-    this.updateSearchText=this.updateSearchText.bind(this);
   }
 
   componentWillMount(){
     this.doSearch();
   }
 
-  doSearch(){
-    getJSON('http://default-environment.mrinzybhbv.us-west-2.elasticbeanstalk.com/search/' + this.props.params.keyword).then((data)=>{
-      console.log(data);
-    this.setState({
-      searchResults: data.dataSets,
-    });
-    }, (err)=>{console.warn(err)});
+  componentWillReceiveProps(){
+    this.doSearch();
   }
 
-  updateSearchText() {
-    console.log(this.props.location);
-    this.doSearch();
+  doSearch(){
+    getJSON('http://default-environment.mrinzybhbv.us-west-2.elasticbeanstalk.com/search/' + this.props.params.keyword).then((data)=>{
+      this.setState({
+        searchResults: data.dataSets,
+      });
+      }, (err)=>{console.warn(err)});
   }
 
   render() {
     return (
       <div>
-        <div className='search-header jumbotron'>
-          <SearchBox searchValue={this.props.params.keyword}
-                     search={this.updateSearchText}
-                     updateSearchText={this.updateSearchText}
-                     />
-        </div>
-
         <div className='search-body row'>
           <div className='col-sm-4'>
               <SearchFilters />
