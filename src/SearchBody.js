@@ -39,7 +39,8 @@ class SearchBody extends Component {
   }
 
   doSearch(){
-    getJSON('http://default-environment.mrinzybhbv.us-west-2.elasticbeanstalk.com/search/' + this.props.params.keyword).then((data)=>{
+    let q = this.props.location.query.q;
+    getJSON('http://default-environment.mrinzybhbv.us-west-2.elasticbeanstalk.com/search/' + q).then((data)=>{
       this.setState({
         searchResults: data.dataSets,
       });
@@ -47,6 +48,7 @@ class SearchBody extends Component {
   }
 
   render() {
+    console.log(this.state.searchResults);
     return (
       <div>
         <div className='search-body row'>
@@ -63,9 +65,4 @@ class SearchBody extends Component {
     );
   }
 }
-
-
-
-
-
 export default SearchBody;

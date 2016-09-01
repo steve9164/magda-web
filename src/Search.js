@@ -3,6 +3,7 @@ import SearchBox from './SearchBox';
 import { browserHistory } from 'react-router';
 import './Search.css';
 
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -10,15 +11,15 @@ class Search extends Component {
   }
 
   updateSearchText(newText) {
-    let path = `/search/${encodeURI(newText)}`;
-    browserHistory.push(path)
+
   }
 
   render() {
+    console.log();
     return (
       <div className='search'>
         <div className='search-header jumbotron'>
-          <SearchBox searchValue={this.props.params.keyword}
+          <SearchBox searchValue={this.props.location.query.q}
                      search={this.updateSearchText}
                      updateSearchText={this.updateSearchText}
                      />
