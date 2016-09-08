@@ -6,7 +6,6 @@ export default function () {
     {'id':'xlsx', 'name':'xlsx' , hitCount: 70},
     {'id':'xls', 'name':'xls' , hitCount: 120},
     {'id':'pdf', 'name':'pdf' , hitCount: 50},
-    {'id':'xls', 'name': 'xls', hitCount: 70},
-    {'id':'zip', 'name':'zip' , hitCount: 30},
+    {'id':'zip', 'name':'zip' , hitCount: 30}
   ]
 }
