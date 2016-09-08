@@ -30,7 +30,8 @@ class FilterJurisdiction extends Filter {
             searchText: e.target.value
         });
 
-        getJsonp(`http://www.censusdata.abs.gov.au/census_services/search?query=${e.target.value}&cycle=2011&results=15&type=jsonp&cb=`).then(data=>{
+        // when value is empty, pass in a space, otherwise error
+        getJsonp(`http://www.censusdata.abs.gov.au/census_services/search?query=${e.target.value || ' '}&cycle=2011&results=15&type=jsonp&cb=`).then(data=>{
             this.setState({
                 locationSearchResults: data
             });
